@@ -1,0 +1,119 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+const {
+  title = 'Video Game Palooza Foundation — A 501(c)(3) Charity Building Digital Opportunity',
+  description = 'Video Game Palooza, Inc. is a 501(c)(3) public charity in Indianapolis that lifts underserved people out of poverty into living-wage digital-economy careers — home of Hope Training Academy, EverVerify, and our 10-year Retro Charity Arcade.',
+  image = '/img/vgp/kids-gaming.jpg',
+  ogType = 'website',
+} = Astro.props;
+const site = 'https://videogamepalooza.org';
+const canonical = new URL(Astro.url.pathname, site).href;
+const ogImage = new URL(image, site).href;
+const GA_ID = import.meta.env.PUBLIC_GA_ID || '';
+const org = {
+  "@context":"https://schema.org","@type":"NGO",
+  "name":"Video Game Palooza, Inc.",
+  "alternateName":["Video Game Palooza Foundation","Hope Training Academy"],
+  "url":site,"logo":`${site}/img/vgp/logo.png`,
+  "description":"A 501(c)(3) public charity training underserved people for living-wage careers in the digital economy and employing them to build the tools of digital trust.",
+  "foundingDate":"2013",
+  "nonprofitStatus":"Nonprofit501c3",
+  "taxID":"46-4169197",
+  "address":{"@type":"PostalAddress","addressLocality":"Indianapolis","addressRegion":"IN","addressCountry":"US"},
+  "areaServed":"US",
+  "sameAs":["https://hopetrainingacademy.org/","https://eververify.org/"]
+};
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:site_name" content="Video Game Palooza Foundation" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+  <meta name="theme-color" content="#0a1226" />
+  <link rel="icon" href="/img/vgp/logo.png" />
+  <script type="application/ld+json" set:html={JSON.stringify(org)} />
+  {GA_ID && <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>}
+  {GA_ID && <script set:html={`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`} />}
+</head>
+<body>
+  <div class="callbar">
+    <div class="wrap">
+      <span class="tag charitybar">501(c)(3) Public Charity&nbsp;·&nbsp;Indianapolis, IN&nbsp;·&nbsp;EIN 46-4169197&nbsp;·&nbsp;2,000+ Served Since 2018</span>
+      <a class="topdonate" href="/get-involved/#donate">Donate</a>
+    </div>
+  </div>
+
+  <header class="masthead">
+    <div class="wrap">
+      <a class="logo vgplogo" href="/">
+        <img src="/img/vgp/logo.png" alt="Video Game Palooza Foundation" />
+        <span class="wordmark">Video Game Palooza<small>Foundation&nbsp;·&nbsp;a 501(c)(3) charity</small></span>
+      </a>
+      <div class="dbas">
+        <span class="dbalabel">Our programs</span>
+        <a href="https://hopetrainingacademy.org/" target="_blank" rel="noopener">Hope Training Academy ↗</a>
+        <a href="https://eververify.org/" target="_blank" rel="noopener">EverVerify ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <Nav />
+
+  <main>
+    <slot />
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="cols">
+        <div>
+          <h4>Video Game Palooza, Inc.</h4>
+          <p>A 501(c)(3) public charity (EIN 46-4169197) in Indianapolis, IN. We open doors to living-wage
+            careers in the digital economy for the people left out of it — and put them to work building the
+            tools of digital trust. <em>d/b/a Hope Training Academy.</em></p>
+        </div>
+        <div>
+          <h4>Our Programs</h4>
+          <p>
+            <a href="https://hopetrainingacademy.org/" target="_blank" rel="noopener">Hope Training Academy ↗</a><br/>
+            <a href="https://eververify.org/" target="_blank" rel="noopener">EverVerify ↗</a><br/>
+            <a href="/retro-charity-arcade/">Retro Charity Arcade</a><br/>
+            <a href="/programs/">STEM &amp; Youth Programs</a>
+          </p>
+        </div>
+        <div>
+          <h4>Get Involved</h4>
+          <p>
+            <a href="/get-involved/#donate">Donate</a><br/>
+            <a href="/get-involved/#volunteer">Volunteer</a><br/>
+            <a href="/get-involved/#partner">Partner With Us</a><br/>
+            <a href="/impact/">Our Impact</a>
+          </p>
+        </div>
+        <div>
+          <h4>Foundation</h4>
+          <p><a href="/about/">About &amp; Governance</a><br/><a href="/contact/">Contact</a></p>
+        </div>
+      </div>
+      <div class="fine">© {new Date().getFullYear()} Video Game Palooza, Inc. (d/b/a Hope Training Academy). All rights reserved. ·
+        A 501(c)(3) public charity · Donations are tax-deductible to the extent allowed by law. ·
+        U.S. Department of Labor Registered Apprenticeship sponsor.</div>
+    </div>
+  </footer>
+</body>
+</html>

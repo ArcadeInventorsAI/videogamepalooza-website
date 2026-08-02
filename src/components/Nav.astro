@@ -1,0 +1,30 @@
+---
+import { nav } from '../data/nav.js';
+function ext(i){ return i.external ? { target:'_blank', rel:'noopener' } : {}; }
+---
+<nav class="nav" id="nav">
+  <button class="navtoggle" onclick="document.getElementById('nav').classList.toggle('open')">☰ Menu</button>
+  <ul>
+    {nav.map(item => (
+      <li class={item.cta ? 'cta' : undefined}>
+        <a href={item.href} {...ext(item)}>{item.label}{item.children && <span class="caret"> ▾</span>}</a>
+        {item.children && (
+          <ul>
+            {item.children.map(c => (
+              <li>
+                <a href={c.href} {...ext(c)}>{c.label}{c.children && <span class="caret"> ▸</span>}</a>
+                {c.children && (
+                  <ul>
+                    {c.children.map(g => (
+                      <li><a href={g.href} {...ext(g)}>{g.label}</a></li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+      </li>
+    ))}
+  </ul>
+</nav>

@@ -1,0 +1,57 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base title="Contact — Video Game Palooza Foundation"
+      description="Reach Video Game Palooza, Inc. (d/b/a Hope Training Academy), a 501(c)(3) public charity in Indianapolis, IN. Questions about programs, donations, partnerships, or the Retro Charity Arcade — we'd love to hear from you.">
+  <section class="section" style="background:linear-gradient(180deg,#0f1d3d,#0a1226);text-align:center">
+    <div class="wrap" style="max-width:760px">
+      <span class="eyebrow">Contact</span>
+      <h2>We'd love to hear from you</h2>
+      <p style="color:var(--mut);font-size:1.1rem;margin-top:12px">Questions about our programs, donations,
+        partnerships, or bringing the Retro Charity Arcade to your event — send us a note.</p>
+      <p style="color:var(--mut);margin-top:8px">Video Game Palooza, Inc. · Carmel / Indianapolis, IN · 501(c)(3) EIN 46-4169197</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap" style="max-width:680px">
+      <form id="cform" class="tlnform">
+        <input type="text" name="company" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true" />
+        <label>Name*<input name="name" required /></label>
+        <label>Email*<input name="email" type="email" required /></label>
+        <label>Phone<input name="phone" /></label>
+        <label>Organization<input name="org" /></label>
+        <label>Topic
+          <select name="interest">
+            <option>General question</option>
+            <option>Donate</option>
+            <option>Volunteer</option>
+            <option>Partner With Us</option>
+            <option>Retro Charity Arcade booking</option>
+            <option>Training / enrollment</option>
+            <option>Media</option>
+          </select>
+        </label>
+        <label>Message*<textarea name="message" rows="5" required></textarea></label>
+        <button type="submit" class="btn hope">Send Message →</button>
+        <p id="cmsg" class="formmsg" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <script is:inline>
+    const f = document.getElementById('cform');
+    const m = document.getElementById('cmsg');
+    f.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      m.textContent = 'Sending…';
+      const data = Object.fromEntries(new FormData(f).entries());
+      try {
+        const r = await fetch('/api/contact', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(data) });
+        const j = await r.json();
+        if (j.ok) { f.reset(); m.textContent = 'Thank you — we received your message and will be in touch soon.'; m.className = 'formmsg ok'; }
+        else { m.textContent = j.error || 'Something went wrong. Please try again.'; m.className = 'formmsg err'; }
+      } catch { m.textContent = 'Network error. Please try again.'; m.className = 'formmsg err'; }
+    });
+  </script>
+</Base>

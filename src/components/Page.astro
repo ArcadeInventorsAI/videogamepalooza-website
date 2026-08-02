@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+const { title, eyebrow, blurb, description, metaTitle } = Astro.props;
+---
+<Base title={metaTitle || `${title} — DreamAuthentics`} description={description}>
+  <section class="section" style="background:linear-gradient(180deg,#0f1d3d,#0a1226)">
+    <div class="wrap" style="text-align:center;max-width:860px">
+      {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+      <h2>{title}</h2>
+      {blurb && <p style="color:var(--mut);font-size:1.12rem">{blurb}</p>}
+    </div>
+  </section>
+  <section class="section" style="padding-top:30px"><div class="wrap"><slot /></div></section>
+</Base>

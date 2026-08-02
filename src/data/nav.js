@@ -1,4 +1,4 @@
-// Video Game Palooza Foundation — primary navigation.
+// Video Game Palooza, Inc. — primary navigation.
 // The parent 501(c)(3); Hope Training Academy and EverVerify are its d/b/a programs
 // (linked out to their own sites). The Retro Charity Arcade is a 10-year flagship program.
 export const nav = [

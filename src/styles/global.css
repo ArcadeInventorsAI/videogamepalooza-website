@@ -288,3 +288,9 @@ footer .fine{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);t
 .formmsg{margin:6px 0 0;font-weight:600}
 .formmsg.ok{color:var(--hope)}
 .formmsg.err{color:#ff8a8a}
+
+/* mission statement callout (homepage) */
+.missionblock{border:1px solid #24304f;border-left:4px solid var(--hope);background:#0f1a34;border-radius:14px;padding:28px 32px;margin:20px auto 0;max-width:880px;text-align:left}
+.missionblock .ms{font-size:1.26rem;line-height:1.7;color:#eaf1ff;font-weight:500;margin:0}
+.missionblock .pillars{margin:18px 0 0;color:var(--gold);font-weight:700;letter-spacing:.03em;text-transform:uppercase;font-size:.82rem}
+.missionblock .notschool{margin:12px 0 0;color:var(--mut);font-size:.98rem;line-height:1.6}

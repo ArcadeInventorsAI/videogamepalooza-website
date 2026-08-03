@@ -44,9 +44,9 @@ const EXACT = {
 
 // Prefix matches (ordered, most specific first) — none can be the start of a current route.
 const PREFIX = [
-  ["/video-game-camps", "/programs/"],
-  ["/camp-landing-pages", "/programs/"],
-  ["/createandplaycamps", "/programs/"],
+  ["/video-game-camps", "https://createandplaycamps.com/"],
+  ["/camp-landing-pages", "https://createandplaycamps.com/"],
+  ["/createandplaycamps", "https://createandplaycamps.com/"],
   ["/portfolio", "/programs/"],
   ["/stem-video-game-challenge", "/programs/"],
   ["/harrison-hill-elementary", "/impact/"],
@@ -89,14 +89,15 @@ export async function onRequest(context) {
   }
 
   const norm = stripSlash(path);
+  const abs = (t) => (t.startsWith("http") ? t : url.origin + t);
   const exact = EXACT[norm];
   if (exact && norm !== stripSlash(exact.split("#")[0])) {
-    return Response.redirect(url.origin + exact, 301);
+    return Response.redirect(abs(exact), 301);
   }
   for (const [from, to] of PREFIX) {
     if (norm === from || norm.startsWith(from)) {
       if (norm !== stripSlash(to.split("#")[0])) {
-        return Response.redirect(url.origin + to, 301);
+        return Response.redirect(abs(to), 301);
       }
     }
   }

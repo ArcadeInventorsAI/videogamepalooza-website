@@ -1,5 +1,5 @@
 import { readdirSync, statSync, writeFileSync } from 'fs';
-const SITE='https://dreamauthentics.com', DIST='dist';
+const SITE='https://videogamepalooza.org', DIST='dist';
 const urls=[];
 function walk(dir, base=''){
   for(const e of readdirSync(dir)){

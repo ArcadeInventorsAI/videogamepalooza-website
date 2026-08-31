@@ -1,0 +1,214 @@
+---
+import Base from "../../layouts/Base.astro";
+
+const categories = [
+  {
+    title: "Artificial Intelligence (AI)",
+    programs: "5 Programs",
+    slug: "artificial-intelligence-ai",
+    img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&auto=format&fit=crop&q=80"
+  },
+  {
+    title: "Arts and Design",
+    programs: "9 Programs",
+    slug: "arts-and-design",
+    img: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=500&auto=format&fit=crop&q=80"
+  },
+  {
+    title: "Beauty Trades",
+    programs: "8 Programs",
+    slug: "beauty-trades",
+    img: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=500&auto=format&fit=crop&q=80"
+  },
+  {
+    title: "Business",
+    programs: "104 Programs",
+    slug: "business",
+    img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=500&auto=format&fit=crop&q=80"
+  },
+  {
+    title: "Computer Applications",
+    programs: "32 Programs",
+    slug: "computer-applications",
+    img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&auto=format&fit=crop&q=80"
+  },
+  {
+    title: "Computer Science",
+    programs: "20 Programs",
+    slug: "computer-science",
+    img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=500&auto=format&fit=crop&q=80"
+  },
+  {
+    title: "Construction and Trades",
+    programs: "87 Programs",
+    slug: "construction-and-trades",
+    img: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=500&auto=format&fit=crop&q=80"
+  },
+  {
+    title: "Health and Fitness",
+    programs: "78 Programs",
+    slug: "health-and-fitness",
+    img: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=500&auto=format&fit=crop&q=80"
+  },
+  {
+    title: "Hospitality",
+    programs: "35 Programs",
+    slug: "hospitality",
+    img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&auto=format&fit=crop&q=80"
+  },
+  {
+    title: "Information Technology",
+    programs: "72 Programs",
+    slug: "information-technology",
+    img: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=500&auto=format&fit=crop&q=80"
+  },
+  {
+    title: "Language",
+    programs: "3 Programs",
+    slug: "language",
+    img: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=500&auto=format&fit=crop&q=80"
+  },
+  {
+    title: "Legal",
+    programs: "14 Programs",
+    slug: "legal",
+    img: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=500&auto=format&fit=crop&q=80"
+  },
+  {
+    title: "Teacher Professional Development",
+    programs: "8 Programs",
+    slug: "teacher-professional-development",
+    img: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=500&auto=format&fit=crop&q=80"
+  },
+  {
+    title: "Writing",
+    programs: "4 Programs",
+    slug: "writing",
+    img: "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=500&auto=format&fit=crop&q=80"
+  }
+];
+---
+
+<Base title="Career Training Programs — Hope Training Academy"
+      description="Hope Training Academy, in partnership with Internet Wealth University, offers online open enrollment programs designed to provide the skills necessary to acquire professional level positions for many in-demand occupations.">
+  
+  <section class="section" style="background: linear-gradient(180deg, #0a1226, #0d2238); padding-top: 60px; padding-bottom: 60px;">
+    <div class="wrap" style="max-width: 900px; text-align: center;">
+      <span class="eyebrow" style="color: #f5b301; text-transform: uppercase; font-family: monospace; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.15em;">Academic Pathways</span>
+      <h1 style="color: #ffffff; font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; margin-top: 10px;">
+        Career Training Programs from Internet Wealth University
+      </h1>
+      <p style="color: #e2eafc; font-size: 1.15rem; line-height: 1.7; margin-top: 18px; text-align: left;">
+        <strong>Internet Wealth University</strong>, in partnership with <strong>Hope Training Academy</strong>, offers online open enrollment programs designed to provide the skills necessary to acquire professional level positions for many in-demand occupations.
+      </p>
+      <p style="color: #e2eafc; font-size: 1.15rem; line-height: 1.7; margin-top: 14px; text-align: left;">
+        Our programs are designed by a team of professionals from each respective field, providing you with effective web-based learning programs. Instructors/mentors are actively involved in your online learning experience, responding to any questions or concerns, as well as encouraging and motivating you to succeed.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" style="background: #f8fafc; padding-top: 60px; padding-bottom: 80px;">
+    <div class="wrap" style="max-width: 1200px;">
+      <h2 style="color: #0a1226; font-size: 2rem; font-weight: 700; margin-bottom: 6px;">Course Categories</h2>
+      <div style="width: 60px; height: 4px; background-color: #1c75bc; margin-bottom: 40px;"></div>
+      
+      <div class="category-grid">
+        {categories.map(cat => (
+          <a href={`https://shop.videogamepalooza.org/collections/courses-${cat.slug}`} class="category-card" target="_blank" rel="noopener">
+            <div class="card-img-wrapper">
+              <img src={cat.img} alt={cat.title} loading="lazy" />
+            </div>
+            <div class="card-info">
+              <h3>{cat.title}</h3>
+              <p>{cat.programs}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+  }
+  
+  @media (min-width: 640px) {
+    .category-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .category-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  .category-card {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  }
+  
+  .category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-color: #cbd5e1;
+  }
+  
+  .card-img-wrapper {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #cbd5e1;
+  }
+  
+  .card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .category-card:hover .card-img-wrapper img {
+    transform: scale(1.05);
+  }
+  
+  .card-info {
+    padding: 20px 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .card-info h3 {
+    color: #0f172a;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    line-height: 1.4;
+    transition: color 0.2s ease;
+  }
+  
+  .category-card:hover .card-info h3 {
+    color: #1c75bc;
+  }
+  
+  .card-info p {
+    color: #64748b;
+    font-size: 0.95rem;
+    margin: 0;
+    font-weight: 500;
+  }
+</style>

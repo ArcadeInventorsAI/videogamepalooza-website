@@ -11,6 +11,7 @@ const site = 'https://videogamepalooza.org';
 const canonical = new URL(Astro.url.pathname, site).href;
 const ogImage = new URL(image, site).href;
 const GA_ID = import.meta.env.PUBLIC_GA_ID || '';
+const ADS_ID = 'AW-826975988';
 const org = {
   "@context":"https://schema.org","@type":"NGO",
   "name":"Video Game Palooza, Inc.",
@@ -47,8 +48,9 @@ const org = {
   <meta name="theme-color" content="#0a1226" />
   <link rel="icon" href="/img/vgp/logo.png" />
   <script type="application/ld+json" set:html={JSON.stringify(org)} />
-  {GA_ID && <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>}
-  {GA_ID && <script set:html={`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`} />}
+  <!-- Google tag (gtag.js) -->
+  <script async src={`https://www.googletagmanager.com/gtag/js?id=${ADS_ID}`}></script>
+  <script set:html={`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${ADS_ID}');${GA_ID?`gtag('config','${GA_ID}');`:''}`} />
 </head>
 <body>
   <div class="callbar">

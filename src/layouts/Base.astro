@@ -51,6 +51,21 @@ const org = {
   <!-- Google tag (gtag.js) -->
   <script async src={`https://www.googletagmanager.com/gtag/js?id=${ADS_ID}`}></script>
   <script set:html={`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${ADS_ID}');${GA_ID?`gtag('config','${GA_ID}');`:''}`} />
+  <!-- Ad-grant bridge: fire enroll_click on high-intent CTA clicks (Key Event candidate) -->
+  <script is:inline>
+  document.addEventListener('DOMContentLoaded',function(){
+    var kw=/enroll|apply|get started|register|donate|view course|shop now|browse|get involved|start now/i;
+    var sel='a.cta,a.btn,button.cta,[data-cta],a[href*="shop.videogamepalooza"],a[href*="/products/"],a[href*="donate"]';
+    function fire(label){
+      try{ if(window.gtag){ gtag('event','enroll_click',{event_category:'conversion',event_label:label,send_to:'AW-826975988'}); } }catch(e){}
+      try{ (window.dataLayer=window.dataLayer||[]).push({event:'enroll_click',cta:label,page:location.pathname}); }catch(e){}
+    }
+    document.querySelectorAll('a,button').forEach(function(el){
+      var t=(el.textContent||'').trim();
+      if(el.matches(sel)||kw.test(t)){ el.addEventListener('click',function(){ fire((t||el.getAttribute('href')||'cta').slice(0,60)); }); }
+    });
+  });
+  </script>
 </head>
 <body>
   <div class="callbar">

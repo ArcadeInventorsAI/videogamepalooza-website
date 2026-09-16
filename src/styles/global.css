@@ -207,6 +207,9 @@ footer .fine{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);t
 
 /* credibility bar */
 .callbar .charitybar{white-space:normal;font-weight:600;letter-spacing:.01em}
+.callbar .topphone{color:var(--cyan);font-family:var(--head);font-weight:800;font-size:clamp(.85rem,1.7vw,1.05rem);letter-spacing:.02em;text-decoration:none;white-space:nowrap}
+.callbar .topphone:hover{color:#fff}
+.callbar .charitybar{margin:0 auto;text-align:center}
 .callbar .topdonate{background:var(--hope);color:#04120c;font-weight:800;padding:5px 16px;border-radius:999px;
   text-decoration:none;white-space:nowrap;margin-left:auto}
 .callbar .topdonate:hover{background:#fff}

@@ -10,7 +10,7 @@ const {
 const site = 'https://videogamepalooza.org';
 const canonical = new URL(Astro.url.pathname, site).href;
 const ogImage = new URL(image, site).href;
-const GA_ID = import.meta.env.PUBLIC_GA_ID || '';
+const GA_ID = import.meta.env.PUBLIC_GA_ID || 'G-HB7VCGD91F';
 const ADS_ID = 'AW-826975988';
 const org = {
   "@context":"https://schema.org","@type":"NGO",
@@ -50,7 +50,7 @@ const org = {
   <script type="application/ld+json" set:html={JSON.stringify(org)} />
   <!-- Google tag (gtag.js) -->
   <script async src={`https://www.googletagmanager.com/gtag/js?id=${ADS_ID}`}></script>
-  <script set:html={`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${ADS_ID}');${GA_ID?`gtag('config','${GA_ID}');`:''}`} />
+  <script set:html={`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('set','linker',{domains:['videogamepalooza.org','hopetrainingacademy.org','store.hopetrainingacademy.org','shop.videogamepalooza.org'],accept_incoming:true});gtag('js',new Date());gtag('config','${ADS_ID}');${GA_ID?`gtag('config','${GA_ID}');`:''}`} />
   <!-- Ad-grant bridge: fire enroll_click on high-intent CTA clicks (Key Event candidate) -->
   <script is:inline>
   document.addEventListener('DOMContentLoaded',function(){

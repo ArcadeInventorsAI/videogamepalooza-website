@@ -10,6 +10,7 @@ export const nav = [
       { label: 'EverVerify ↗', href: 'https://eververify.org/', external: true },
       { label: 'Retro Charity Arcade', href: '/retro-charity-arcade/' },
       { label: 'STEM & Youth Programs', href: '/programs/' },
+      { label: 'From Game Player to Game Maker', href: '/game-to-tech/' },
     ],
   },
   { label: 'Retro Store ↗', href: 'https://shop.videogamepalooza.org/collections/all-video-games', external: true },

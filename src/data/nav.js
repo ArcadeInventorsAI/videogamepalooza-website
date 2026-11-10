@@ -12,9 +12,8 @@ export const nav = [
       { label: 'STEM & Youth Programs', href: '/programs/' },
     ],
   },
-  { label: 'Retro Store ↗', href: 'https://shop.videogamepalooza.org/collections/retro-store', external: true },
+  { label: 'Retro Store ↗', href: 'https://shop.videogamepalooza.org/collections/all-video-games', external: true },
   { label: 'Career Training', href: '/career-training/' },
-  { label: 'Hall of Fame ↗', href: 'https://shop.videogamepalooza.org/pages/hall-of-fame', external: true },
   {
     label: 'Get Involved',
     href: '/get-involved/',
